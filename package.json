@@ -38,5 +38,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "description": "DAW Frontend Project",
+  "main": "index.js",
+  "repository": "https://github.com/teniii/daw-project-frontend",
+  "author": "Alex Tenita <tenitaalex@gmail.com>",
+  "license": "MIT"
 }
