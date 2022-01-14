@@ -1,42 +1,97 @@
 import React, { useState } from "react";
-import { Box, Flex, Link, Text } from "@chakra-ui/layout";
+import { Flex, Text } from "@chakra-ui/layout";
 import { Link as RouterLink } from "react-router-dom";
 import { Input } from "@chakra-ui/input";
 import { Button } from "@chakra-ui/button";
 import { Heading } from "@chakra-ui/react";
+import MyBox from "../components/MyBox";
 
 interface RegisterProps {}
 
 const RegisterPage: React.FC<RegisterProps> = () => {
+  const [firstName, setFirstName] = useState<string | null>();
+  const [lastName, setLastName] = useState<string | null>();
   const [username, setUsername] = useState<string | null>();
   const [password, setPassword] = useState<string | null>();
 
+  const buttonDisabled =
+    firstName?.trim() === "" ||
+    lastName?.trim() === "" ||
+    username?.trim() === "" ||
+    password?.trim() === "";
+
   return (
-    <Box
-      width="100%"
-      padding="4rem"
-      alignContent="center"
-      justifyContent="center"
-    >
-      <Heading> REGISTER</Heading>
-      <Input onChange={(val) => setUsername(val.target.textContent)} />
-      <Input onChange={(val) => setPassword(val.target.textContent)} />
-      <Flex>
-        <RouterLink to={"/route1"}>
-          <Button width="30%" minWidth="5rem" value="Login" />
-        </RouterLink>
-        <RouterLink to={"/login"}>
-          <Button width="30%" minWidth="6rem" value="Register" />
+    <MyBox alignSelf="center" height="100vh" padding="25%">
+      <Flex
+        direction="column"
+        width="min-content"
+        minWidth="25rem"
+        alignSelf="center"
+        alignItems="center"
+      >
+        <Heading alignSelf="center" marginBottom="1rem">
+          REGISTER
+        </Heading>
+
+        <Text alignSelf="start" marginLeft="0.5rem">
+          First Name
+        </Text>
+        <Input
+          marginBottom="0.8rem"
+          placeholder="First Name"
+          onChange={(val) => {
+            setFirstName(val.target.value);
+          }}
+        />
+
+        <Text alignSelf="start" marginLeft="0.5rem">
+          Last Name
+        </Text>
+        <Input
+          marginBottom="0.8rem"
+          placeholder="Last Name"
+          onChange={(val) => {
+            setLastName(val.target.value);
+          }}
+        />
+
+        <Text alignSelf="start" marginLeft="0.5rem">
+          Username
+        </Text>
+        <Input
+          marginBottom="0.8rem"
+          placeholder="Username"
+          onChange={(val) => {
+            setUsername(val.target.value);
+            console.log(" === value: ", val.target.value);
+          }}
+        />
+
+        <Text alignSelf="start" marginLeft="0.5rem">
+          Password
+        </Text>
+        <Input
+          marginBottom="0.8rem"
+          onChange={(val) => setPassword(val.target.value)}
+          type="password"
+          placeholder="Password"
+        />
+
+        <RouterLink to={"/"}>
+          <Button
+            marginY="0.5rem"
+            width="30%"
+            minWidth="6rem"
+            value="Register"
+            bg="green.200"
+            alignSelf="center"
+            disabled={buttonDisabled}
+          >
+            Register
+          </Button>
         </RouterLink>
       </Flex>
-      {/* <RouterLink to={"/register"}> */}
-      <Link href={"/register"}>
-        <Text width="30%" minWidth="5rem">
-          Forgot Password
-        </Text>
-      </Link>
-      {/* </RouterLink> */}
-    </Box>
+    </MyBox>
   );
 };
 

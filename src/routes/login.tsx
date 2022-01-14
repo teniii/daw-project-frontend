@@ -1,3 +1,4 @@
+/* eslint-disable no-unreachable */
 import React, { useState } from "react";
 import { Flex, Heading, Link, Text } from "@chakra-ui/layout";
 import { Link as RouterLink } from "react-router-dom";
@@ -25,7 +26,14 @@ const LoginPage: React.FC<LoginProps> = () => {
 
     if (!username || !password) return;
 
-    login(username, password)
+    // fetch("https://localhost:5001/api/movie/")
+    //   // fetch("https://api.npms.io/v2/search?q=react")
+    //   .then((resp) => console.log("The response: ", resp))
+    //   .catch((err) => console.log(" == ce cacat mai ai acum> ?", err));
+
+    // return;
+
+    login(username ?? "", password ?? "")
       .then((token) => {
         dispatch(reduxLogin(token));
         console.log(" === Token: ", token);
@@ -51,7 +59,7 @@ const LoginPage: React.FC<LoginProps> = () => {
           Username
         </Text>
         <Input
-          //   value={username ?? ""}
+          placeholder="Username"
           onChange={(val) => {
             setUsername(val.target.value);
             console.log(" === value: ", val.target.value);
@@ -63,6 +71,7 @@ const LoginPage: React.FC<LoginProps> = () => {
         <Input
           onChange={(val) => setPassword(val.target.value)}
           type="password"
+          placeholder="Password"
         />
         {/* </MyBox> */}
         <Flex
@@ -72,18 +81,24 @@ const LoginPage: React.FC<LoginProps> = () => {
           width="50%"
         >
           {/* <RouterLink to={"/route1"}> */}
-          <button onClick={onLoginPress}>Login</button>
-          {/* <Button
+          {/* <button onClick={onLoginPress}>Login</button> */}
+          <Button
             width="30%"
             minWidth="5rem"
             value="Login"
+            bg="green.400"
             onClick={onLoginPress}
           >
             Login
-          </Button> */}
+          </Button>
           {/* </RouterLink> */}
-          <RouterLink to={"/login"} style={{ width: "min-content" }}>
-            <Button width="30%" minWidth="6rem" value="Register">
+          <RouterLink to={"/register"} style={{ width: "min-content" }}>
+            <Button
+              width="30%"
+              minWidth="6rem"
+              value="Register"
+              bg="orange.200"
+            >
               Register
             </Button>
           </RouterLink>
