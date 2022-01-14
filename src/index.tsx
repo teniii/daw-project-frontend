@@ -8,18 +8,25 @@ import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Route1 from "./routes/route1";
 import Route2 from "./routes/route2";
+import { ChakraProvider } from "@chakra-ui/react";
+import LoginPage from "./routes/login";
+import RegisterPage from "./routes/register";
 
 ReactDOM.render(
   <BrowserRouter>
-    <React.StrictMode>
-      <Provider store={store}>
-        <Routes>
-          <Route path="/" element={<App />} />
-          <Route path="route1" element={<Route1 />} />
-          <Route path="route2" element={<Route2 />} />
-        </Routes>
-      </Provider>
-    </React.StrictMode>
+    <ChakraProvider>
+      <React.StrictMode>
+        <Provider store={store}>
+          <Routes>
+            <Route path="/" element={<App />} />
+            <Route path="route1" element={<Route1 />} />
+            <Route path="route2" element={<Route2 />} />
+            <Route path="login" element={<LoginPage />} />
+            <Route path="register" element={<RegisterPage />} />
+          </Routes>
+        </Provider>
+      </React.StrictMode>
+    </ChakraProvider>
   </BrowserRouter>,
   document.getElementById("root")
 );
