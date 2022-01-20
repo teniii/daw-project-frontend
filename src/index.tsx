@@ -11,6 +11,8 @@ import Route2 from "./routes/route2";
 import { ChakraProvider } from "@chakra-ui/react";
 import LoginPage from "./routes/login";
 import RegisterPage from "./routes/register";
+import SignInPage from "./routes/sign-in";
+import MoviePage from "./routes/movie";
 
 ReactDOM.render(
   <BrowserRouter>
@@ -22,7 +24,12 @@ ReactDOM.render(
             <Route path="route1" element={<Route1 />} />
             <Route path="route2" element={<Route2 />} />
             <Route path="login" element={<LoginPage />} />
+            <Route path="sign-in" element={<SignInPage />} />
             <Route path="register" element={<RegisterPage />} />
+            <Route
+              path={`movie/:movieId`}
+              element={<MoviePage movieId={1} />}
+            />
           </Routes>
         </Provider>
       </React.StrictMode>
