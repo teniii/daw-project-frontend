@@ -20,7 +20,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       {isLoggedIn ? renderNavigationBar() : null}
       <MyBox
         marginTop={isLoggedIn ? "4.5rem" : 0}
-        bg="red"
         overflowY="scroll"
         paddingBottom="4rem"
       >

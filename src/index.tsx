@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import App from "./App";
+import App from "./components/app/App";
 import { store } from "./store/store";
 import { Provider } from "react-redux";
 import * as serviceWorker from "./serviceWorker";
@@ -14,31 +14,19 @@ import RegisterPage from "./routes/register";
 import SignInPage from "./routes/sign-in";
 import MoviePage from "./routes/movie";
 import Layout from "./components/Layout";
+import PrivateRoute from "./components/PrivateRoute";
+import NavigationRoutes from "./components/NavigationRoutes";
 
 ReactDOM.render(
-  <BrowserRouter>
-    <ChakraProvider>
-      <React.StrictMode>
-        <Provider store={store}>
-          <Layout>
-            <Routes>
-              <Route path="/" element={<App />} />
-              <Route path="sign-in" element={<SignInPage />} />
-              <Route path="route1" element={<Route1 />} />
-              <Route path="route2" element={<Route2 />} />
-              <Route path="login" element={<LoginPage />} />
-              <Route path="register" element={<RegisterPage />} />
-              <Route
-                path={`movie/:movieId`}
-                element={<MoviePage movieId={1} />}
-              />
-              <Route path={`movie`} element={<MoviePage />} />
-            </Routes>
-          </Layout>
-        </Provider>
-      </React.StrictMode>
-    </ChakraProvider>
-  </BrowserRouter>,
+  <ChakraProvider>
+    <React.StrictMode>
+      <Provider store={store}>
+        <Layout>
+          <NavigationRoutes />
+        </Layout>
+      </Provider>
+    </React.StrictMode>
+  </ChakraProvider>,
   document.getElementById("root")
 );
 

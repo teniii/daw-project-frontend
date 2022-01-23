@@ -1,10 +1,10 @@
 import React from "react";
 import logo from "./logo.svg";
-import { Counter } from "./components/counter/Counter";
+import { Counter } from "../counter/Counter";
 import "./App.css";
 import { Navigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { selectIsLoggedIn } from "./store/authSlice";
+import { selectIsLoggedIn } from "../../store/authSlice";
 
 const App = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);

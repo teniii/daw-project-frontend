@@ -15,7 +15,7 @@ interface MoviePageProps {
 const MoviePage: React.FC<MoviePageProps> = ({ movieId }) => {
   const [movies, setMovies] = useState<Movie[]>();
   const [error, setError] = useState(false);
-
+  // const
   useEffect(() => {
     movieId
       ? getMovie(movieId)
@@ -55,6 +55,7 @@ const MoviePage: React.FC<MoviePageProps> = ({ movieId }) => {
   const renderMovie = (movie: Movie) => (
     <Flex
       direction="column"
+      bg="yellow"
       //   minWidth="25rem"
       alignSelf="center"
       alignItems="center"
@@ -81,7 +82,7 @@ const MoviePage: React.FC<MoviePageProps> = ({ movieId }) => {
         <Text
           marginBottom="0.8rem"
           placeholder="First Name"
-          children={movie.title}
+          children={movie.releaseDate.toLocaleDateString()}
         />
       </Flex>
       <RouterLink to={"/"}>
@@ -100,7 +101,7 @@ const MoviePage: React.FC<MoviePageProps> = ({ movieId }) => {
   );
 
   return (
-    <MyBox alignSelf="center" height="100vh" padding="25%">
+    <MyBox alignSelf="center">
       {movies?.map((movie) => renderMovie(movie))}
     </MyBox>
   );
