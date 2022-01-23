@@ -85,7 +85,6 @@ const ProfilePage: React.FC<ProfilePageProps> = () => {
           value="Register"
           bg="green.200"
           alignSelf="center"
-          // onClick={onClick}
         >
           Edit profile
         </Button>
@@ -94,7 +93,7 @@ const ProfilePage: React.FC<ProfilePageProps> = () => {
   );
 
   return (
-    <MyBox alignSelf="center" height="100vh" padding="25%">
+    <MyBox alignSelf="center" height="min-content" paddingY="10%">
       {renderProfile()}
     </MyBox>
   );

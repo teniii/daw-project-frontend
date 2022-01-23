@@ -151,7 +151,7 @@ const EditProfilePage: React.FC<ProfilePageProps> = () => {
   );
 
   return (
-    <MyBox alignSelf="center" height="100vh" padding="25%">
+    <MyBox alignSelf="center" height="min-content" paddingTop="10%">
       {renderProfile()}
     </MyBox>
   );
