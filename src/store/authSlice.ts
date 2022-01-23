@@ -1,15 +1,18 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState, AppThunk } from "./store";
 import { fetchCount } from "../api/counterAPI";
+import { User, USERS } from "../data/users";
 
 export interface AuthState {
   token: string;
   isLoggedIn: boolean;
+  userProfile?: User;
 }
 
 const initialState: AuthState = {
   token: "",
   isLoggedIn: false,
+  userProfile: undefined,
 };
 
 // The function below is called a thunk and allows us to perform async logic. It
@@ -34,15 +37,19 @@ export const authSlice = createSlice({
     reduxLogin: (state, action: PayloadAction<string>) => {
       state.token = action.payload;
       state.isLoggedIn = true;
+      state.userProfile = USERS[action.payload.length % 4];
     },
     reduxLogout: (state) => {
       state.token = "";
       state.isLoggedIn = false;
     },
+    reduxEditProfile: (state, action: PayloadAction<User>) => {
+      state.userProfile = action.payload;
+    },
   },
 });
 
-export const { reduxLogin, reduxLogout } = authSlice.actions;
+export const { reduxLogin, reduxLogout, reduxEditProfile } = authSlice.actions;
 
 // The function below is called a selector and allows us to select a value from
 // the state. Selectors can also be defined inline where they're used instead of
@@ -50,6 +57,7 @@ export const { reduxLogin, reduxLogout } = authSlice.actions;
 export const selectCount = (state: RootState) => state.counter.value;
 export const selectIsLoggedIn = (state: RootState) => state.auth.isLoggedIn;
 export const selectToken = (state: RootState) => state.auth.token;
+export const selectUserProfile = (state: RootState) => state.auth.userProfile;
 
 // We can also write thunks by hand, which may contain both sync and async logic.
 // Here's an example of conditionally dispatching actions based on current state.

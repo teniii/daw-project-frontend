@@ -7,6 +7,8 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import App from "./app/App";
 import { useSelector } from "react-redux";
 import { selectIsLoggedIn } from "../store/authSlice";
+import ProfilePage from "../routes/profile";
+import EditProfilePage from "../routes/editProfile";
 
 const NavigationRoutes: React.FC = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
@@ -22,11 +24,12 @@ const NavigationRoutes: React.FC = () => {
       <Route path="route2" element={<Route2 />} />
       {/* <Route path="login" element={<LoginPage />} /> */}
       <Route path="register" element={<RegisterPage />} />
-      <Route
-        path={`movie/:movieId`}
-        element={privateRoute(<MoviePage movieId={1} />)}
-      />
-      <Route path={`movie`} element={privateRoute(<MoviePage />)} />
+      <Route path="movie" element={privateRoute(<MoviePage />)}>
+        <Route path=":movieId" element={privateRoute(<MoviePage />)} />
+      </Route>
+      <Route path="profile" element={privateRoute(<ProfilePage />)}>
+        <Route path="edit" element={privateRoute(<EditProfilePage />)} />
+      </Route>
     </Routes>
   );
 };

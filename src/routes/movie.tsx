@@ -91,10 +91,10 @@ const MoviePage: React.FC<MoviePageProps> = ({ movieId }) => {
           width="30%"
           minWidth="6rem"
           value="Register"
-          bg="green.200"
+          bg="orange.200"
           alignSelf="center"
         >
-          Go back
+          Add to list
         </Button>
       </RouterLink>
     </Flex>
