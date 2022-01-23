@@ -13,24 +13,28 @@ import LoginPage from "./routes/login";
 import RegisterPage from "./routes/register";
 import SignInPage from "./routes/sign-in";
 import MoviePage from "./routes/movie";
+import Layout from "./components/Layout";
 
 ReactDOM.render(
   <BrowserRouter>
     <ChakraProvider>
       <React.StrictMode>
         <Provider store={store}>
-          <Routes>
-            <Route path="/" element={<App />} />
-            <Route path="route1" element={<Route1 />} />
-            <Route path="route2" element={<Route2 />} />
-            <Route path="login" element={<LoginPage />} />
-            <Route path="sign-in" element={<SignInPage />} />
-            <Route path="register" element={<RegisterPage />} />
-            <Route
-              path={`movie/:movieId`}
-              element={<MoviePage movieId={1} />}
-            />
-          </Routes>
+          <Layout>
+            <Routes>
+              <Route path="/" element={<App />} />
+              <Route path="sign-in" element={<SignInPage />} />
+              <Route path="route1" element={<Route1 />} />
+              <Route path="route2" element={<Route2 />} />
+              <Route path="login" element={<LoginPage />} />
+              <Route path="register" element={<RegisterPage />} />
+              <Route
+                path={`movie/:movieId`}
+                element={<MoviePage movieId={1} />}
+              />
+              <Route path={`movie`} element={<MoviePage />} />
+            </Routes>
+          </Layout>
         </Provider>
       </React.StrictMode>
     </ChakraProvider>

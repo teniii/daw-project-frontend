@@ -26,6 +26,8 @@ const SignInPage: React.FC<SignInPageProps> = () => {
     console.log(" == IN THE LOGIN BUTTON FCT: ", username, password);
 
     if (!username || !password) return;
+    dispatch(reduxLogin("1234"));
+    navigate("/movie");
 
     // fetch("https://localhost:5001/api/movie/")
     //   // fetch("https://api.npms.io/v2/search?q=react")
@@ -45,7 +47,7 @@ const SignInPage: React.FC<SignInPageProps> = () => {
 
   return (
     <MyBox padding="4rem" height="100vh">
-      <NavigationBar />
+      {/* <NavigationBar /> */}
       <MyBox alignItems="center" justifyContent="center" marginTop="10rem">
         <Flex
           direction="column"

@@ -2,10 +2,14 @@ import React from "react";
 import logo from "./logo.svg";
 import { Counter } from "./components/counter/Counter";
 import "./App.css";
-import NavigationBar from "./components/NavigationBar";
+import { Navigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { selectIsLoggedIn } from "./store/authSlice";
 
-function App() {
-  return (
+const App = () => {
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+
+  return isLoggedIn ? (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
@@ -53,7 +57,9 @@ function App() {
         </span>
       </header>
     </div>
+  ) : (
+    <Navigate replace to="/sign-in" />
   );
-}
+};
 
 export default App;

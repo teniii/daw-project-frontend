@@ -1,5 +1,5 @@
 import React from "react";
-import { Flex, Link, Text } from "@chakra-ui/layout";
+import { Flex, Link } from "@chakra-ui/layout";
 import { useNavbar } from "../hooks/useNavbar";
 
 interface INavigationBar {}
