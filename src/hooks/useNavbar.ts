@@ -46,8 +46,8 @@ export const useNavbar = () => {
   const logoutItem: MenuItem = {
     title: MENU_ENTRIES[4],
     onPress: () => {
-      navigate("/login");
       dispatch(reduxLogout());
+      navigate("/sign-in");
     },
   };
 
