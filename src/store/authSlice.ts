@@ -43,7 +43,7 @@ export const authSlice = createSlice({
       state.token = "";
       state.isLoggedIn = false;
     },
-    reduxEditProfile: (state, action: PayloadAction<User>) => {
+    reduxEditProfile: (state, action: PayloadAction<User | undefined>) => {
       state.userProfile = action.payload;
     },
   },

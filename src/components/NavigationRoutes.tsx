@@ -27,9 +27,8 @@ const NavigationRoutes: React.FC = () => {
       <Route path="movie" element={privateRoute(<MoviePage />)}>
         <Route path=":movieId" element={privateRoute(<MoviePage />)} />
       </Route>
-      <Route path="profile" element={privateRoute(<ProfilePage />)}>
-        <Route path="edit" element={privateRoute(<EditProfilePage />)} />
-      </Route>
+      <Route path="profile" element={privateRoute(<ProfilePage />)} />
+      <Route path="profile/edit" element={privateRoute(<EditProfilePage />)} />
     </Routes>
   );
 };
