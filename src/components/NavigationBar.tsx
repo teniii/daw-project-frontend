@@ -6,10 +6,10 @@ interface INavigationBar {}
 
 const NavigationBar: React.FC<INavigationBar> = () => {
   const { menuItems } = useNavbar();
-  //   const menuItems: { title: string; onPress: () => void }[] = [];
+
   return (
     <Flex
-      width="90vw"
+      width="100%"
       justifyContent="space-around"
       alignItems="center"
       borderRadius="full"
@@ -19,7 +19,7 @@ const NavigationBar: React.FC<INavigationBar> = () => {
       fontWeight="semibold"
     >
       {menuItems.map((item) => (
-        <Link key={`navbar-item-${item.title}`} onPress={item.onPress}>
+        <Link key={`navbar-item-${item.title}`} onClick={item.onPress}>
           {item.title}
         </Link>
       ))}

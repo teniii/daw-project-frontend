@@ -27,7 +27,8 @@ const SignInPage: React.FC<SignInPageProps> = () => {
 
     if (!username || !password) return;
     dispatch(reduxLogin("1234"));
-    navigate("/movie");
+    navigate("/");
+    return;
 
     // fetch("https://localhost:5001/api/movie/")
     //   // fetch("https://api.npms.io/v2/search?q=react")

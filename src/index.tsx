@@ -18,15 +18,17 @@ import PrivateRoute from "./components/PrivateRoute";
 import NavigationRoutes from "./components/NavigationRoutes";
 
 ReactDOM.render(
-  <ChakraProvider>
-    <React.StrictMode>
-      <Provider store={store}>
-        <Layout>
-          <NavigationRoutes />
-        </Layout>
-      </Provider>
-    </React.StrictMode>
-  </ChakraProvider>,
+  <BrowserRouter>
+    <ChakraProvider>
+      <React.StrictMode>
+        <Provider store={store}>
+          <Layout>
+            <NavigationRoutes />
+          </Layout>
+        </Provider>
+      </React.StrictMode>
+    </ChakraProvider>
+  </BrowserRouter>,
   document.getElementById("root")
 );
 

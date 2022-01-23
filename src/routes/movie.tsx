@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Flex, Text } from "@chakra-ui/layout";
 import { Link as RouterLink } from "react-router-dom";
-import { Input } from "@chakra-ui/input";
 import { Button } from "@chakra-ui/button";
 import { Heading } from "@chakra-ui/react";
 import MyBox from "../components/MyBox";
@@ -15,7 +14,7 @@ interface MoviePageProps {
 const MoviePage: React.FC<MoviePageProps> = ({ movieId }) => {
   const [movies, setMovies] = useState<Movie[]>();
   const [error, setError] = useState(false);
-  // const
+
   useEffect(() => {
     movieId
       ? getMovie(movieId)
@@ -44,7 +43,7 @@ const MoviePage: React.FC<MoviePageProps> = ({ movieId }) => {
     );
   }
 
-  if (movies?.length === 0) {
+  if (!movies || movies?.length === 0) {
     return (
       <MyBox alignItems="center" justifyContent="center">
         <Heading> 404 Not found </Heading>
@@ -55,11 +54,12 @@ const MoviePage: React.FC<MoviePageProps> = ({ movieId }) => {
   const renderMovie = (movie: Movie) => (
     <Flex
       direction="column"
-      bg="yellow"
-      //   minWidth="25rem"
-      alignSelf="center"
+      marginX="3rem"
+      marginY="2rem"
+      minWidth="20rem"
       alignItems="center"
       key={movie.id + "-" + movie.title}
+      overflowX="auto"
     >
       <Heading alignSelf="center" marginBottom="1rem">
         MOVIE
@@ -100,10 +100,17 @@ const MoviePage: React.FC<MoviePageProps> = ({ movieId }) => {
     </Flex>
   );
 
-  return (
-    <MyBox alignSelf="center">
+  return movies.length > 1 ? (
+    <Flex
+      alignSelf="center"
+      justifyContent="space-evenly"
+      display="flex"
+      flexWrap="wrap"
+    >
       {movies?.map((movie) => renderMovie(movie))}
-    </MyBox>
+    </Flex>
+  ) : (
+    renderMovie(movies[0])
   );
 };
 
