@@ -9,6 +9,7 @@ import { useSelector } from "react-redux";
 import { selectIsLoggedIn } from "../store/authSlice";
 import ProfilePage from "../routes/profile";
 import EditProfilePage from "../routes/editProfile";
+import ParticipantPage from "../routes/participant";
 
 const NavigationRoutes: React.FC = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
@@ -22,13 +23,13 @@ const NavigationRoutes: React.FC = () => {
       <Route path="sign-in" element={<SignInPage />} />
       <Route path="route1" element={<Route1 />} />
       <Route path="route2" element={<Route2 />} />
-      {/* <Route path="login" element={<LoginPage />} /> */}
       <Route path="register" element={<RegisterPage />} />
       <Route path="movie" element={privateRoute(<MoviePage />)}>
         <Route path=":movieId" element={privateRoute(<MoviePage />)} />
       </Route>
       <Route path="profile" element={privateRoute(<ProfilePage />)} />
       <Route path="profile/edit" element={privateRoute(<EditProfilePage />)} />
+      <Route path="participant" element={privateRoute(<ParticipantPage />)} />
     </Routes>
   );
 };
