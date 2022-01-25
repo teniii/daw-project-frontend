@@ -48,7 +48,6 @@ const EditProfilePage: React.FC<ProfilePageProps> = () => {
           textAlign="center"
           marginRight="0.5rem"
           noOfLines={1}
-          bg="red"
           minWidth="max-content"
         >
           First Name:
