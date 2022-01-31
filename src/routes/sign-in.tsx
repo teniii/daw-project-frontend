@@ -26,6 +26,7 @@ const SignInPage: React.FC<SignInPageProps> = () => {
     console.log(" == IN THE LOGIN BUTTON FCT: ", username, password);
 
     if (!username || !password) return;
+
     dispatch(reduxLogin("1234"));
     navigate("/");
     return;

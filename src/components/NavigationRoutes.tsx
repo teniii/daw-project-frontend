@@ -19,7 +19,7 @@ const NavigationRoutes: React.FC = () => {
 
   return (
     <Routes>
-      <Route path="/" element={privateRoute(<App />)} />
+      <Route path="/" element={<Navigate to={"/movie"} />} />
       <Route path="sign-in" element={<SignInPage />} />
       <Route path="route1" element={<Route1 />} />
       <Route path="route2" element={<Route2 />} />

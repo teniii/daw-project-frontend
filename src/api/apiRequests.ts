@@ -1,7 +1,7 @@
 import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from "axios";
 
 const client = axios.create({
-  baseURL: "https://localhost:5000",
+  baseURL: "http://localhost:5000",
   headers: {
     // Authorization: "Bearer " + getApiToken(),
     Authorization: "Bearer " + "abc",
